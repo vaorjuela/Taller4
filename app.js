@@ -9,47 +9,6 @@ let users = [];
 appServer.listen (3000, ()=>{;
 });
 
-appServer.get ('/',
-    (req, res) => {
-        res.send ('HELLO WORLD WITH EXPRESS!!!');
-    }
-);
-
-appServer.get ('/mybasicinfo',
-    (req, res) => {
-        res.send ('THIS IS MY BASIC INFORMATION - My Name Is Valentina Orjuela!!!');
-    }
-);
-
-appServer.get ('/myexperience',
- (req, res) => {
- res.send ('THIS IS MY EXPERIENCE');
- }
-);
-
-appServer.get ('/getrequest',
- (req, res) => {
- res.send ('THIS IS A GET REQUEST');
- }
-);
-
-appServer.post ('/postrequest',
- (req, res) => {
- res.send ('THIS IS A POST REQUEST');
- }
-);
-
-appServer.delete ('/deleterequest',
- (req, res) => {
- res.send ('THIS IS A DELETE REQUEST');
- }
-);
-
-appServer.put ('/putrequest',
- (req, res) => {
- res.send ('THIS IS A PUT REQUEST');
- }
-);
 
 appServer.get ('/user', (req, res)=>{
     res.json (myUser);
@@ -80,18 +39,18 @@ appServer.get ('/user', (req, res)=>{
     res.json (users[req.params.id]);
    });
 
-   appServer.get ('/getusername/:nombre', (req, res)=>{
-    for(var i = 0; i < users.length; i++)
-        if (req.params.nombre.localeCompare(users[i].nombre)==0)
+    appServer.get ('/getusername/:nombre', (req, res)=>{
+        for(var i = 0; i < users.length; i++)
+            if (req.params.nombre.localeCompare(users[i].nombre)==0)
             res.json(users[i]);
-
-    res.json ('Usuario no Encontrado');
+         return[
+             res.json ('Usuario no Encontrado')];
    });
 
    appServer.get ('/alluserage/:edad', (req, res)=>{
        var usersage = [];
     for(var i = 0; i < users.length; i++ )
-        if (parseInt(req.params.edad) > (users[i].edad))
+        if (parseInt(req.params.edad) < (users[i].edad))
             usersage.push(users[i])
             
     res.json(usersage);
