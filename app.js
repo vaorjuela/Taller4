@@ -27,7 +27,7 @@ appServer.get ('/user', (req, res)=>{
    });
 
 
-   appServer.get ('/deleteuser/:id' , (req, res)=>{
+   appServer.delete ('/deleteuser/:id' , (req, res)=>{
     res.json (users.splice(req.params.id,1));
    });
    
